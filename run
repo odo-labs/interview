@@ -5,6 +5,18 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Function to open browser
+open_browser() {
+    sleep 2  # Give the server a moment to start
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        open "http://localhost:3002/"
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        xdg-open "http://localhost:3002/"
+    elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
+        start "http://localhost:3002/"
+    fi
+}
+
 # Check if Docker is installed
 if ! command_exists docker; then
     echo "Error: Docker is not installed. Please install Docker first."
@@ -29,7 +41,9 @@ case "$1" in
         docker-compose up -d --build
         ;;
     "")
-        docker-compose up
+        docker-compose up &
+        open_browser
+        wait
         ;;
     *)
         echo "Usage: ./run [command]"
