@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  core:
+    build:
+      context: ./core
+      dockerfile: Dockerfile
+    volumes:
+      - ./core/core:/app/core
+      - ./core/rfps:/app/rfps
+      - ./core/manage.py:/app/manage.py
+    ports:
+      - "9000:8000"
+    environment:
+      - DEBUG=1
+      - DJANGO_SETTINGS_MODULE=core.settings
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - ./frontend/generate-api.js:/app/generate-api.js
+    ports:
+      - "3002:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:9000
+    depends_on:
+      - core
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=interview
+      - POSTGRES_USER=interview
+      - POSTGRES_PASSWORD=interview
+
+volumes:
+  postgres_data: 
