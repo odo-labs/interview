@@ -29,6 +29,7 @@ services:
       - "3002:3000"
     environment:
       - REACT_APP_API_URL=http://localhost:9000
+      - WDS_SOCKET_PORT=3002
     depends_on:
       - core
 
