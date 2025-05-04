@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker exec -i interview-core-1 bash -c "python manage.py $@"
