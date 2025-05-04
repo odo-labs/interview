@@ -11,6 +11,7 @@ Please complete the project setup and make sure you are ready to begin developme
 Before starting, ensure you have the following installed:
 - Docker
 - Docker Compose
+
 The easiest way to install this is to use [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 
 ## Project Overview
