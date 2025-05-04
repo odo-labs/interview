@@ -1,4 +1,5 @@
 import { RFP } from "api/Api";
+import Button from "lib/Button";
 
 interface RFPCardProps {
   rfp: RFP;
@@ -45,12 +46,7 @@ const RFPCard = ({ rfp }: RFPCardProps) => {
           <div className="text-gray-700 mb-md text-sm">{rfp.description}</div>
         </div>
         <div className="flex gap-md mt-xs ml-auto">
-          <button
-            className="flex items-center gap-xs px-lg py-xs bg-blue-500 text-white rounded text-sm font-medium hover:bg-blue-600 transition-colors"
-            aria-label={`View details for ${rfp.title}`}
-          >
-            View Details
-          </button>
+          <Button>View Details</Button>
         </div>
       </div>
     </div>
