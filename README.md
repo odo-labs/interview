@@ -33,6 +33,8 @@ This project consists of:
    - Django backend on http://localhost:9000
    - React frontend on http://localhost:3002
    - PostgreSQL database
+  
+   **IMPORTANT:** This command does not return so that it's easy to view logs from the frontend and backend. You'll need to open another terminal for the rest of the commands.
 3. Run the init script
    ```bash
    ./odo init
