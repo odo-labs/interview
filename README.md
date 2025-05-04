@@ -15,11 +15,22 @@ This is a monorepo project containing a Django backend and React frontend, desig
 ## Getting Started
 
 1. Clone the repository
-2. Run the following commands to start all services:
+2. Run the following commands to setup the project
 
 ```bash
 ./odo setup
 ./odo types
+```
+
+3. Run `tests` to validate the setup
+
+```bash
+./odo tests
+```
+
+4. Run `run` to 
+
+```bash
 ./odo run
 ```
 
