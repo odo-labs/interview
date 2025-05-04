@@ -120,15 +120,15 @@ case "$1" in
     *)
         echo "Usage: ./odo [command]"
         echo "Commands:"
-        echo "  setup    - Import RFP data"
-        echo "  types    - Generate TypeScript types for the frontend"
-        echo "  run      - Start containers and show logs"
-        echo "  update   - Update and restart containers"
-        echo "  tests    - Run RFP tests"
-        echo ""
         echo "  start    - Start containers in detached mode"
         echo "  stop     - Stop containers"
+        echo "  update   - Update and restart containers"
+        echo "  run      - Start containers and show logs"
+        echo "  init     - Import RFP data and initialize the database"
+        echo "  open     - Open the application in your default browser"
         echo "  manage   - Run Django management commands"
+        echo "  tests    - Run RFP tests"
+        echo "  types    - Generate TypeScript types for the frontend"
         exit 1
         ;;
 esac 

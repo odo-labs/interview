@@ -41,6 +41,8 @@ class RFPViewTests(TestCase):
             "issuing_org": self.issuing_org.pk,
         }
         response = self.client.post(self.rfp_list_url, data, format="json")
+        if response.status_code != status.HTTP_201_CREATED:
+            print(f"Create RFP Error Response: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(RFP.objects.count(), 2)
         self.assertEqual(RFP.objects.get(id=response.data["id"]).title, "New RFP")
@@ -61,6 +63,8 @@ class RFPViewTests(TestCase):
             "issuing_org": self.issuing_org.pk,
         }
         response = self.client.put(self.rfp_detail_url, data, format="json")
+        if response.status_code != status.HTTP_200_OK:
+            print(f"Update RFP Error Response: {response.data}")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.rfp.refresh_from_db()
         self.assertEqual(self.rfp.title, "Updated RFP")

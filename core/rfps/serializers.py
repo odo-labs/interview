@@ -15,12 +15,23 @@ class IssuingOrgSerializer(serializers.ModelSerializer):
 
 
 class RFPSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(required=True)
-    created_at = serializers.DateTimeField(required=True)
+    id = serializers.IntegerField(read_only=True)
+    created_at = serializers.DateTimeField(read_only=True)
     due_date = serializers.DateField(required=True)
     description = serializers.CharField(required=True)
-    issuing_org = IssuingOrgSerializer(required=True)
+    issuing_org = serializers.PrimaryKeyRelatedField(
+        queryset=IssuingOrg.objects.all(), write_only=True
+    )
+    issuing_org_detail = IssuingOrgSerializer(source="issuing_org", read_only=True)
 
     class Meta:
         model = RFP
-        fields = ["id", "title", "description", "created_at", "due_date", "issuing_org"]
+        fields = [
+            "id",
+            "title",
+            "description",
+            "created_at",
+            "due_date",
+            "issuing_org",
+            "issuing_org_detail",
+        ]

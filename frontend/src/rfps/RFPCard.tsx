@@ -15,7 +15,8 @@ const SidebarValue = ({ label, value }: { label: string; value: string }) => {
 };
 
 const RFPCard = ({ rfp }: RFPCardProps) => {
-  const formatDate = (date: string) => {
+  const formatDate = (date: string | undefined) => {
+    if (!date) return "-";
     return new Date(date).toLocaleDateString();
   };
 
@@ -29,7 +30,10 @@ const RFPCard = ({ rfp }: RFPCardProps) => {
       <div className="p-lg flex flex-col items-start min-w-[160px] text-sm text-gray-600 border-r border-gray-200 bg-blue-100 text-right">
         <SidebarValue label="Posted" value={formatDate(rfp.created_at)} />
         <SidebarValue label="Proposal Due" value={formatDate(rfp.due_date)} />
-        <SidebarValue label="Location" value={rfp.issuing_org.state_location} />
+        <SidebarValue
+          label="Location"
+          value={rfp.issuing_org_detail?.state_location ?? "-"}
+        />
       </div>
       {/* Main content */}
       <div className="flex-1 p-lg flex flex-col justify-between">
@@ -41,7 +45,7 @@ const RFPCard = ({ rfp }: RFPCardProps) => {
             {rfp.title}
           </div>
           <div className="text-lg text-gray-400 mb-xs">
-            {rfp.issuing_org.name}
+            {rfp.issuing_org_detail?.name ?? "-"}
           </div>
           <div className="text-gray-700 mb-md text-sm">{rfp.description}</div>
         </div>

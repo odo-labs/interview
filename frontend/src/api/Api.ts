@@ -31,7 +31,7 @@ export interface IssuingOrg {
 
 export interface RFP {
   /** Id */
-  id: number;
+  id?: number;
   /**
    * Title
    * @minLength 1
@@ -47,13 +47,15 @@ export interface RFP {
    * Created at
    * @format date-time
    */
-  created_at: string;
+  created_at?: string;
   /**
    * Due date
    * @format date
    */
   due_date: string;
-  issuing_org: IssuingOrg;
+  /** Issuing org */
+  issuing_org: number;
+  issuing_org_detail?: IssuingOrg;
 }
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, HeadersDefaults, ResponseType } from "axios";
