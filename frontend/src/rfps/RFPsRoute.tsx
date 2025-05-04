@@ -2,6 +2,7 @@ import { RFP } from "api/Api";
 import useApiClient from "hooks/useApiClient";
 import { useEffect, useState } from "react";
 import RFPCard from "./RFPCard";
+import Select from "lib/Select";
 
 const RFPsRoute = () => {
   const apiClient = useApiClient();
