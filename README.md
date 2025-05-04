@@ -25,27 +25,29 @@ This project consists of:
 ## Getting Started
 
 1. Clone this repository
-2. Run the setup script to initialize the project:
+2. Start the application:
    ```bash
-   ./odo setup
+   ./odo run
+   ```
+3. Run the init script
+   ```bash
+   ./odo init
    ```
    This will import the initial RFP data into the database.
-
-3. Generate TypeScript types for the frontend:
+4. Generate TypeScript types for the frontend:
    ```bash
    ./odo types
    ```
-
-4. Run the test suite to verify your setup:
+5. Run the test suite to verify your setup:
    ```bash
    ./odo tests
    ```
    All tests should pass before proceeding.
-
-5. Start the application:
+6. Run open to bring up the web app
    ```bash
-   ./odo run
+   ./odo open
    ```
+
 
 This will start:
 - Django backend on http://localhost:9000
@@ -89,6 +91,9 @@ In most cirumstances, these should be the only commands you need.
 These other commands are also available
 
 ```bash
+# Open the browser to the web app
+./odo open
+
 # Start services in the background
 ./odo start
 
@@ -108,8 +113,9 @@ Once you have the project running, please review the [FAMILIARIZE.md](FAMILIARIZ
 If you encounter any issues during setup:
 1. Ensure Docker and Docker Compose are properly installed and running
 2. Check that ports 3002 and 9000 are not in use by other applications
-3. Try running `./odo stop` followed by `./odo setup` to reset the environment
-4. If tests fail, check the test output for specific error messages
+3. Try running `./odo update` to update the services to the latest
+4. If that still doesn't work, try running `./odo stop` followed by `./odo run` to reset the environment
+5. If tests fail, check the test output for specific error messages
 
 ## Interview Preparation
 
