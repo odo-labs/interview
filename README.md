@@ -34,18 +34,19 @@ This project consists of:
    - React frontend on http://localhost:3002
    - PostgreSQL database
   
-   **IMPORTANT:** This command does not return so that it's easy to view logs from the frontend and backend. You'll need to open another terminal for the rest of the commands.
-3. Run the init script
+   **IMPORTANT:** This command does not return so that it's easy to view logs from the frontend and backend. Ctl-C will stop the services.
+3. Open a second terminal (since `./odo run` doesn't exit)
+4. Run the init script
    ```bash
    ./odo init
    ```
    This will import the initial RFP data into the database.
-4. Run the test suite to verify your setup:
+5. Run the test suite to verify your setup:
    ```bash
    ./odo tests
    ```
    All tests should pass before proceeding.
-5. Run open to bring up the web app
+6. Run open to bring up the web app
    ```bash
    ./odo open
    ```
