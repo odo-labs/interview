@@ -2,6 +2,19 @@
 
 This document provides an in-depth look at the project structure and components. Understanding these components will help you prepare for the technical interview.
 
+## Development Workflow
+
+1. **API Development**
+   - Modify backend models and views
+   - Test changes using unit tests when appropriate
+   - Run `./odo types` to update frontend types
+
+2. **Frontend Development**
+   - Use `useApiClient` which returns an API client generated from the backend types after running `./odo types`
+   - Implement new components as needed
+   - Style components using Tailwind CSS utility classes
+   - Test changes in the browser
+
 ## Project Architecture
 
 The project is divided into two main components:
@@ -91,16 +104,3 @@ frontend/
    - Custom configuration in `tailwind.config.js`
    - Includes custom colors, spacing, and other design tokens
    - Familiarity with Tailwind CSS utility classes is recommended
-
-## Development Workflow
-
-1. **API Development**
-   - Modify backend models and views
-   - Test changes using unit tests when appropriate
-   - Run `./odo types` to update frontend types
-
-2. **Frontend Development**
-   - Use `useApiClient` which returns an API client generated from the backend types after running `./odo types`
-   - Implement new components as needed
-   - Style components using Tailwind CSS utility classes
-   - Test changes in the browser
