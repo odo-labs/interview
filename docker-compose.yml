@@ -15,7 +15,8 @@ services:
       - DEBUG=1
       - DJANGO_SETTINGS_MODULE=core.settings
     depends_on:
-      - db
+      db:
+        condition: service_healthy
 
   frontend:
     build:
@@ -42,6 +43,11 @@ services:
       - POSTGRES_DB=interview
       - POSTGRES_USER=interview
       - POSTGRES_PASSWORD=interview
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U interview"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data: 
