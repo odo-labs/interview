@@ -1,6 +1,6 @@
 import { RFP } from "api/Api";
 import useApiClient from "hooks/useApiClient";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const apiClient = useApiClient();
@@ -8,9 +8,11 @@ function App() {
   const [rfps, setRfps] = useState<RFP[]>([]);
 
   useEffect(() => {
-    apiClient.rfpsList().then((response) => {
+    const fetchRfps = async () => {
+      const response = await apiClient.rfpsList();
       setRfps(response.data.results);
-    });
+    };
+    fetchRfps();
   }, [apiClient]);
 
   return (
