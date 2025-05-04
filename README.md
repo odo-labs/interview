@@ -29,30 +29,24 @@ This project consists of:
    ```bash
    ./odo run
    ```
+   This will start:
+   - Django backend on http://localhost:9000
+   - React frontend on http://localhost:3002
+   - PostgreSQL database
 3. Run the init script
    ```bash
    ./odo init
    ```
    This will import the initial RFP data into the database.
-4. Generate TypeScript types for the frontend:
-   ```bash
-   ./odo types
-   ```
-5. Run the test suite to verify your setup:
+4. Run the test suite to verify your setup:
    ```bash
    ./odo tests
    ```
    All tests should pass before proceeding.
-6. Run open to bring up the web app
+5. Run open to bring up the web app
    ```bash
    ./odo open
    ```
-
-
-This will start:
-- Django backend on http://localhost:9000
-- React frontend on http://localhost:3002
-- PostgreSQL database
 
 The script will show logs from all services. Press Ctrl+C to stop the services.
 
