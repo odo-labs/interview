@@ -5,9 +5,8 @@ from rfps.models.issuing_org import IssuingOrg
 
 class RFP(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=1024)
     description = models.TextField(null=True, blank=True)
 
     # When the RFP is due
