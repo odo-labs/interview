@@ -46,6 +46,9 @@ The project includes an `odo` script to manage the services:
 # Generate TypeScript types
 # Run this whenever changing backend endpoints
 ./odo types
+
+# Run the test suite
+./odo tests
 ```
 
 *Other Commands*

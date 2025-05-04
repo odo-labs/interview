@@ -81,6 +81,12 @@ case "$1" in
         check_container_running
         docker exec -i interview-core-1 bash -c "python manage.py ${@:2}"
         ;;
+    "tests")
+        check_setup "$1"
+        check_container_running
+        echo "Running RFP tests..."
+        docker exec -i interview-core-1 bash -c "pytest"
+        ;;
     "types")
         check_setup "$1"
         check_container_running
@@ -117,6 +123,7 @@ case "$1" in
         echo "  types    - Generate TypeScript types for the frontend"
         echo "  run      - Start containers and show logs"
         echo "  update   - Update and restart containers"
+        echo "  tests    - Run RFP tests"
         echo ""
         echo "  start    - Start containers in detached mode"
         echo "  stop     - Stop containers"
