@@ -224,10 +224,8 @@
         },
         "RFP": {
             "required": [
-                "id",
                 "title",
                 "description",
-                "created_at",
                 "due_date",
                 "issuing_org"
             ],
@@ -235,7 +233,8 @@
             "properties": {
                 "id": {
                     "title": "Id",
-                    "type": "integer"
+                    "type": "integer",
+                    "readOnly": true
                 },
                 "title": {
                     "title": "Title",
@@ -251,7 +250,8 @@
                 "created_at": {
                     "title": "Created at",
                     "type": "string",
-                    "format": "date-time"
+                    "format": "date-time",
+                    "readOnly": true
                 },
                 "due_date": {
                     "title": "Due date",
@@ -259,6 +259,10 @@
                     "format": "date"
                 },
                 "issuing_org": {
+                    "title": "Issuing org",
+                    "type": "integer"
+                },
+                "issuing_org_detail": {
                     "$ref": "#/definitions/IssuingOrg"
                 }
             }
