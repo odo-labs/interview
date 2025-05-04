@@ -192,22 +192,55 @@
         }
     },
     "definitions": {
-        "RFP": {
+        "IssuingOrg": {
             "required": [
-                "title",
-                "description"
+                "id",
+                "name",
+                "state_location",
+                "kind"
             ],
             "type": "object",
             "properties": {
                 "id": {
-                    "title": "ID",
-                    "type": "integer",
-                    "readOnly": true
+                    "title": "Id",
+                    "type": "integer"
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "state_location": {
+                    "title": "State location",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "kind": {
+                    "title": "Kind",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "RFP": {
+            "required": [
+                "id",
+                "title",
+                "description",
+                "created_at",
+                "due_date",
+                "issuing_org"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "Id",
+                    "type": "integer"
                 },
                 "title": {
                     "title": "Title",
                     "type": "string",
-                    "maxLength": 200,
+                    "maxLength": 1024,
                     "minLength": 1
                 },
                 "description": {
@@ -218,14 +251,15 @@
                 "created_at": {
                     "title": "Created at",
                     "type": "string",
-                    "format": "date-time",
-                    "readOnly": true
+                    "format": "date-time"
                 },
-                "updated_at": {
-                    "title": "Updated at",
+                "due_date": {
+                    "title": "Due date",
                     "type": "string",
-                    "format": "date-time",
-                    "readOnly": true
+                    "format": "date"
+                },
+                "issuing_org": {
+                    "$ref": "#/definitions/IssuingOrg"
                 }
             }
         }

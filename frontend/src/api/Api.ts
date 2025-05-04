@@ -9,13 +9,33 @@
  * ---------------------------------------------------------------
  */
 
+export interface IssuingOrg {
+  /** Id */
+  id: number;
+  /**
+   * Name
+   * @minLength 1
+   */
+  name: string;
+  /**
+   * State location
+   * @minLength 1
+   */
+  state_location: string;
+  /**
+   * Kind
+   * @minLength 1
+   */
+  kind: string;
+}
+
 export interface RFP {
-  /** ID */
-  id?: number;
+  /** Id */
+  id: number;
   /**
    * Title
    * @minLength 1
-   * @maxLength 200
+   * @maxLength 1024
    */
   title: string;
   /**
@@ -27,12 +47,13 @@ export interface RFP {
    * Created at
    * @format date-time
    */
-  created_at?: string;
+  created_at: string;
   /**
-   * Updated at
-   * @format date-time
+   * Due date
+   * @format date
    */
-  updated_at?: string;
+  due_date: string;
+  issuing_org: IssuingOrg;
 }
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, HeadersDefaults, ResponseType } from "axios";

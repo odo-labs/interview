@@ -25,6 +25,7 @@ services:
       - ./frontend/src:/app/src
       - ./frontend/public:/app/public
       - ./frontend/generate-api.js:/app/generate-api.js
+      - ./frontend/tailwind.config.js:/app/tailwind.config.js
     ports:
       - "3002:3000"
     environment:

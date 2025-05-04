@@ -53,6 +53,7 @@ class Command(BaseCommand):
                     org_name = row["org_name"]
                     state_location = row["state_location"]
                     kind = row["kind"]
+                    description = row["description"]
 
                     # Create or get the issuing organization
                     issuing_org, created = IssuingOrg.objects.get_or_create(
@@ -71,6 +72,7 @@ class Command(BaseCommand):
                     RFP.objects.create(
                         created_at=created_at,
                         title=row["title"],
+                        description=description,
                         due_date=(
                             datetime.strptime(row["due_date"], "%Y-%m-%d").date()
                             if row["due_date"]
