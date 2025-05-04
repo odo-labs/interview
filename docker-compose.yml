@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   core:
+    container_name: interview-core
     build:
       context: ./core
       dockerfile: Dockerfile
@@ -19,6 +20,7 @@ services:
         condition: service_healthy
 
   frontend:
+    container_name: interview-frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -36,6 +38,7 @@ services:
       - core
 
   db:
+    container_name: interview-db
     image: postgres:15
     volumes:
       - postgres_data:/var/lib/postgresql/data

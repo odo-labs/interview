@@ -31,8 +31,8 @@ fi
 
 # Check if container is running
 check_container_running() {
-    if ! docker ps | grep -q "interview-core-1"; then
-        echo "Error: Container 'interview-core-1' is not running. Please start the containers with 'odo start' first."
+    if ! docker ps | grep -q "interview-core"; then
+        echo "Error: Container 'interview-core' is not running. Please start the containers with 'odo start' first."
         exit 1
     fi
 }
@@ -52,8 +52,8 @@ case "$1" in
         ;;
     "init")
         check_container_running
-        docker cp core/data/rfps.csv interview-core-1:/app/rfps.csv
-        docker exec -i interview-core-1 python manage.py import_rfps rfps.csv
+        docker cp core/data/rfps.csv interview-core:/app/rfps.csv
+        docker exec -i interview-core python manage.py import_rfps rfps.csv
         if [ $? -eq 0 ]; then
             echo "Setup completed successfully!"
         else
@@ -66,17 +66,17 @@ case "$1" in
         ;;
     "manage")
         check_container_running
-        docker exec -i interview-core-1 bash -c "python manage.py ${@:2}"
+        docker exec -i interview-core bash -c "python manage.py ${@:2}"
         ;;
     "tests")
         check_container_running
         echo "Running RFP tests..."
-        docker exec -i interview-core-1 bash -c "pytest"
+        docker exec -i interview-core bash -c "pytest"
         ;;
     "types")
         check_container_running
         echo -n "Generating OpenAPI schema..."
-        docker exec interview-core-1 bash -c "python manage.py generate_swagger -o schema.json"
+        docker exec interview-core bash -c "python manage.py generate_swagger -o schema.json"
         if [ $? -eq 0 ]; then
             echo "done"
         else
@@ -86,7 +86,7 @@ case "$1" in
         fi
 
         echo -n "Copying schema from core..."
-        docker cp interview-core-1:/app/schema.json ./frontend/schema.json > /dev/null 2>&1
+        docker cp interview-core:/app/schema.json ./frontend/schema.json > /dev/null 2>&1
         if [ $? -eq 0 ]; then
             echo "done"
         else
@@ -96,7 +96,7 @@ case "$1" in
         fi
 
         echo -n "Copying schema to frontend..."
-        docker cp ./frontend/schema.json interview-frontend-1:/app/schema.json > /dev/null 2>&1
+        docker cp ./frontend/schema.json interview-frontend:/app/schema.json > /dev/null 2>&1
         if [ $? -eq 0 ]; then
             echo "done"
         else
@@ -106,7 +106,7 @@ case "$1" in
         fi
 
         echo -n "Generating TypeScript types..."
-        docker exec interview-frontend-1 sh -c "npm run types"
+        docker exec interview-frontend sh -c "npm run types"
         if [ $? -eq 0 ]; then
             echo "done"
         else
